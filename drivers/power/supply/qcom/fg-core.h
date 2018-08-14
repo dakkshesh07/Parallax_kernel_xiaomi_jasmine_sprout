@@ -398,23 +398,10 @@ static const struct fg_pt fg_tsmc_osc_table[] = {
 	{  90,		444992 },
 };
 
-#ifdef CONFIG_MACH_MI
-#define BATT_MA_AVG_SAMPLES		8
-struct batt_params {
-	bool		update_now;
-	int		batt_raw_soc;
-	int		batt_soc;
-	int		samples_num;
-	int		samples_index;
-	int		batt_ma_avg_samples[BATT_MA_AVG_SAMPLES];
-	int		batt_ma_avg;
-	int		batt_ma_prev;
-	int		batt_ma;
-	int		batt_mv;
-	int		batt_temp;
-	struct timespec	last_soc_change_time;
+struct fg_saved_data {
+	union power_supply_propval val;
+	unsigned long last_req_expires;
 };
-#endif
 
 struct fg_chip {
 	struct device		*dev;
@@ -510,6 +497,7 @@ struct fg_chip {
 	struct work_struct	esr_filter_work;
 	struct alarm		esr_filter_alarm;
 	ktime_t			last_delta_temp_time;
+	struct fg_saved_data	saved_data[POWER_SUPPLY_PROP_MAX];
 };
 
 /* Debugfs data structures are below */
