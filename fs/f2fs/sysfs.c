@@ -740,9 +740,8 @@ int __init f2fs_init_sysfs(void)
 	if (ret) {
 		kobject_put(&f2fs_feat);
 		kset_unregister(&f2fs_kset);
-	} else {
+	else
 		f2fs_proc_root = proc_mkdir("fs/f2fs_dev", NULL);
-	}
 	return ret;
 }
 
