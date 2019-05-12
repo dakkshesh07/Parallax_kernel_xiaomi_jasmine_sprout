@@ -410,6 +410,7 @@ static void sched_debug_header(struct seq_file *m)
 	PN(sysctl_sched_min_granularity);
 	PN(sysctl_sched_wakeup_granularity);
 	P(sysctl_sched_child_runs_first);
+	P(sysctl_sched_cpu_schedtune_bias);
 	P(sysctl_sched_features);
 #ifdef CONFIG_SCHED_HMP
 	P(sched_upmigrate);
