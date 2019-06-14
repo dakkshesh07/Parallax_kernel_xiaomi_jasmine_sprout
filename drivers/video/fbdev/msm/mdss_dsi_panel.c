@@ -72,6 +72,9 @@ bool is_display_on()
 }
 
 DEFINE_LED_TRIGGER(bl_led_trigger);
+static bool ce_enable = true;
+static bool srgb_enable = true;
+static bool cabc_enable = false;
 
 #ifdef CONFIG_MACH_MI
 #define PANEL_DIMMING_ON_CMD 0xF00
