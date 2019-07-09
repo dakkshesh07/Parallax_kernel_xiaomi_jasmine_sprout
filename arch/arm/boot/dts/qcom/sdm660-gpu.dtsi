@@ -64,16 +64,10 @@
 		interrupts = <0 300 0>;
 		interrupt-names = "kgsl_3d0_irq";
 		qcom,id = <0>;
-
 		qcom,chipid = <0x05010200>;
-
 		qcom,initial-pwrlevel = <6>;
-
-		/* <HZ/12> */
 		qcom,idle-timeout = <64>;
-
 		qcom,highest-bank-bit = <14>;
-
 		/* size in bytes */
 		qcom,snapshot-size = <1048576>;
 
@@ -97,7 +91,6 @@
 		qcom,msm-bus,num-paths = <1>;
 		qcom,msm-bus,vectors-KBps =
 				<26 512 0 0>,
-
 				<26 512 0 400000>,     /*  1 bus=100  */
 				<26 512 0 600000>,     /*  2 bus=150  */
 				<26 512 0 800000>,     /*  3 bus=200  */
@@ -180,7 +173,7 @@
 
 				qcom,speed-bin = <0>;
 
-				qcom,initial-pwrlevel = <6>;
+				qcom,initial-pwrlevel = <7>;
 
 				/* TURBO */
 				qcom,gpu-pwrlevel@0 {
@@ -617,7 +610,7 @@
 				/* NOM */
 				qcom,gpu-pwrlevel@0 {
 					reg = <0>;
-					qcom,gpu-freq = <585000000>;
+					qcom,gpu-freq = <588000000>;
 					qcom,bus-freq = <12>;
 					qcom,bus-min = <11>;
 					qcom,bus-max = <12>;
