@@ -3120,8 +3120,8 @@ static int clk_osm_acd_init(struct clk_osm *c)
 
 static unsigned long init_rate = 300000000;
 static unsigned long osm_clk_init_rate = 200000000;
-static unsigned long pwrcl_boot_rate = 1401600000;
-static unsigned long perfcl_boot_rate = 1747200000;
+static unsigned long pwrcl_boot_rate = 1843200000;
+static unsigned long perfcl_boot_rate = 2150400000;
 
 static int clk_cpu_osm_driver_probe(struct platform_device *pdev)
 {
@@ -3391,10 +3391,6 @@ static int clk_cpu_osm_driver_probe(struct platform_device *pdev)
 
 	is_sdm630 = of_device_is_compatible(pdev->dev.of_node,
 					"qcom,clk-cpu-osm-sdm630");
-	if (is_sdm630) {
-		pwrcl_boot_rate = 1382400000;
-		perfcl_boot_rate = 1670400000;
-	}
 
 	/* Set final boot rate */
 	rc = clk_set_rate(pwrcl_clk.hw.clk, pwrcl_boot_rate);
