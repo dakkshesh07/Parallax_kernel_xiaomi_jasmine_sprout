@@ -64,10 +64,16 @@
 		interrupts = <0 300 0>;
 		interrupt-names = "kgsl_3d0_irq";
 		qcom,id = <0>;
+
 		qcom,chipid = <0x05010200>;
+
 		qcom,initial-pwrlevel = <6>;
-		qcom,idle-timeout = <64>;
+
+		/* <HZ/12> */
+		qcom,idle-timeout = <80>;
+
 		qcom,highest-bank-bit = <14>;
+
 		/* size in bytes */
 		qcom,snapshot-size = <1048576>;
 
@@ -91,6 +97,7 @@
 		qcom,msm-bus,num-paths = <1>;
 		qcom,msm-bus,vectors-KBps =
 				<26 512 0 0>,
+
 				<26 512 0 400000>,     /*  1 bus=100  */
 				<26 512 0 600000>,     /*  2 bus=150  */
 				<26 512 0 800000>,     /*  3 bus=200  */
@@ -196,7 +203,7 @@
 				/* NOM_L1 */
 				qcom,gpu-pwrlevel@2 {
 					reg = <2>;
-					qcom,gpu-freq = <647000000>;
+					qcom,gpu-freq = <649000000>;
 					qcom,bus-freq = <11>;
 					qcom,bus-min = <10>;
 					qcom,bus-max = <12>;
@@ -286,7 +293,7 @@
 				/* NOM_L1 */
 				qcom,gpu-pwrlevel@2 {
 					reg = <2>;
-					qcom,gpu-freq = <647000000>;
+					qcom,gpu-freq = <649000000>;
 					qcom,bus-freq = <11>;
 					qcom,bus-min = <10>;
 					qcom,bus-max = <12>;
@@ -367,7 +374,7 @@
 				/* NOM_L1 */
 				qcom,gpu-pwrlevel@1 {
 					reg = <1>;
-					qcom,gpu-freq = <647000000>;
+					qcom,gpu-freq = <649000000>;
 					qcom,bus-freq = <11>;
 					qcom,bus-min = <10>;
 					qcom,bus-max = <12>;
@@ -439,7 +446,7 @@
 				/* NOM_L1 */
 				qcom,gpu-pwrlevel@0 {
 					reg = <0>;
-					qcom,gpu-freq = <700000000>;
+					qcom,gpu-freq = <649000000>;
 					qcom,bus-freq = <13>;
 					qcom,bus-min = <12>;
 					qcom,bus-max = <13>;
@@ -610,7 +617,7 @@
 				/* NOM */
 				qcom,gpu-pwrlevel@0 {
 					reg = <0>;
-					qcom,gpu-freq = <588000000>;
+					qcom,gpu-freq = <585000000>;
 					qcom,bus-freq = <12>;
 					qcom,bus-min = <11>;
 					qcom,bus-max = <12>;
