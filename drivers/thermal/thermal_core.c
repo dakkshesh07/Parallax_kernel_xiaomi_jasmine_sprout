@@ -2867,7 +2867,6 @@ void thermalsconfig_init(void)
 		printk(KERN_ALERT"Failed to create attribute file.");
 	}
 }
-#endif
 
 static int __init thermal_init(void)
 {
