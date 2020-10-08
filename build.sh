@@ -1,4 +1,4 @@
-echo kernel clompiler for android by dakkshesh
+echo kernel clompiler for android by dakkshesh, please change path for cross compilers in the file
 
 echo Lets start....
 
