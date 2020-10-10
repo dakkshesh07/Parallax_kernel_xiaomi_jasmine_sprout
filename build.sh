@@ -72,7 +72,7 @@ if [ -f out/arch/arm64/boot/Image.gz-dtb ]; then
 	    	    
 	    sudo zip -r9 DuskMane_Kernel.zip .
 
-	    cd ..0
+	    cd ..
 	    
 	    echo "${GREEN}zip file made!${RST}"
 	    echo "${GREEN}check your zipped file in anykernel folder!${RST}"
