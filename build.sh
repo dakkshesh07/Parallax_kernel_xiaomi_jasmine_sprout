@@ -15,9 +15,6 @@ NC="\033[0m"
 
 TANGGAL=$(date +"%F-%S")
 
-#echo "${GREEN}cleaning old files${RST}"
-
-#echoText"cleaning old files"
 
 rm -rf out
 rm -rf anykernel
@@ -72,14 +69,10 @@ if [ -f out/arch/arm64/boot/Image.gz-dtb ]; then
 
 		cp out/arch/arm64/boot/Image.gz-dtb anykernel
 	    cd anykernel
-	    #mv ../out/arch/arm64/boot/Image.gz-dtb
-	    
-	    #zip -r9 "${ZIPNAME}-${TANGGAL}".zip
-
-	    
+	    	    
 	    sudo zip -r9 DuskMane_Kernel.zip .
 
-	    cd ..
+	    cd ..0
 	    
 	    echo "${GREEN}zip file made!${RST}"
 	    echo "${GREEN}check your zipped file in anykernel folder!${RST}"
@@ -131,9 +124,7 @@ fi
 
 		cp out/arch/arm64/boot/Image.gz-dtb anykernel
     	cd anykernel
-    	#mv ../out/arch/arm64/boot/Image.gz-dtb .
     	
-    	#SHA=$(cat "../out/.version")
     	sudo zip -r9 DuskMane_Kernel.zip .
 
 
@@ -146,5 +137,5 @@ fi
     	echo "${RED}build failed${NC}"
     fi
 
-echo finished.... bye
+echo "${GREEN}finished...... bye!${RST}"
 echo thank you.....
