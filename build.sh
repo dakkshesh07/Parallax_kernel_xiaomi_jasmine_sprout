@@ -19,7 +19,7 @@ TANGGAL=$(date +"%F-%S")
 rm -rf out
 rm -rf anykernel
 
-echo "${GREEN}copying needed tools for compiler-tools${RST}"
+echo "${GREEN}copying needed tools from compiler-tools${RST}"
 
 cd compiler-tools
 cp -R anykernel $cd ..
