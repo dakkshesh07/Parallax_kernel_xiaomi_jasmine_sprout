@@ -1,8 +1,8 @@
 clear
 
-git clone https://github.com/stormbreaker-project/aarch64-linux-android-4.9.git 64bit
+#git clone https://github.com/stormbreaker-project/aarch64-linux-android-4.9.git 64bit
 
-git clone https://github.com/stormbreaker-project/arm-linux-androideabi-4.9.git 32bit
+#git clone https://github.com/stormbreaker-project/arm-linux-androideabi-4.9.git 32bit
 
 git clone https://github.com/kdrag0n/proton-clang.git clang
 
@@ -41,21 +41,26 @@ sleep 5
 
 make O=out ARCH=arm64 duskmane_defconfig
 
-PATH="${PWD}/clang/bin:${PWD}/64bit/bin:${PWD}/32bit/bin:${PATH}" \
+PATH="${PWD}/clang/bin:${PATH}" \
 make -j$(nproc --all) O=out \
                       ARCH=arm64 \
                       CC=clang \
-                      CLANG_TRIPLE=aarch64-linux-gnu- \
-                      CROSS_COMPILE=aarch64-linux-android- \
-                      CROSS_COMPILE_ARM32=arm-linux-androideabi-
+                      CROSS_COMPILE=aarch64-linux-gnu- \
+                      CROSS_COMPILE_ARM32=arm-linux-gnueabi- \
+                      LLVM="llvm-" \
+                      AR=llvm-ar \
+                      NM=llvm-nm \
+                      OBJCOPY=llvm-objcopy \
+                      OBJDUMP=llvm-objdump \
+                      STRIP=llvm-strip
 
 
 
-	if [ -f out/arch/arm64/boot/Image.gz-dtb ]; then
+  if [ -f out/arch/arm64/boot/Image.gz-dtb ]; then
 
-		cp out/arch/arm64/boot/Image.gz-dtb anykernel
+    cp out/arch/arm64/boot/Image.gz-dtb anykernel
     cd anykernel
-    	
+      
     sudo zip -r9 DuskMane_Kernel.zip .
 
 
@@ -66,7 +71,7 @@ make -j$(nproc --all) O=out \
     echo "${GREEN}finished...... bye!${RST}"
 
     else
-    	echo "${RED}build failed${NC}"
+      echo "${RED}build failed${NC}"
     fi
 
 echo "script ended"
