@@ -1,9 +1,5 @@
 clear
 
-#git clone https://github.com/stormbreaker-project/aarch64-linux-android-4.9.git 64bit
-
-#git clone https://github.com/stormbreaker-project/arm-linux-androideabi-4.9.git 32bit
-
 if [ -r clang ]; then
   echo clang found! check for update...
   cd clang
@@ -30,11 +26,6 @@ echo "**** Removing leftovers ****"
 rm -rf $ANYKERNEL3_DIR/Image.gz-dtb
 rm -rf $ANYKERNEL3_DIR/dtbo.img
 rm -rf $ANYKERNEL3_DIR/DuskMane_Kernel.zip
-
-cd compiler-tools
-cp -R anykernel $cd ..
-cd ..
-
 rm -rf out
 
 make clean && make distclean && make mrproper
