@@ -4,6 +4,31 @@ echo kernel clompiler for android by dakkshesh
 
 echo Lets start....
 
+		if [ -r 64bit ]; then
+			echo 64 bit gcc found! check for update....
+			cd 64bit
+			git pull
+			cd ..
+
+		else
+			echo 64bit gcc not found!, git cloning it now....
+			git clone https://github.com/arter97/arm64-gcc.git 64bit
+
+		fi
+
+		if [ -r 32bit ]; then
+  			echo 32 bit gcc found! check for update...
+  			cd 32bit
+  			git pull
+  			cd ..
+
+  		else
+  			echo 32bit gc not found! fetching it now
+  			git clone https://github.com/arter97/arm32-gcc.git 32bit
+
+  		fi
+  		
+
 ZIPNAME="DuskMane_Kernel"
 
 
@@ -16,13 +41,14 @@ NC="\033[0m"
 TANGGAL=$(date +"%F-%S")
 
 
+
+
+
+echo "**** Removing leftovers ****"
+rm -rf $ANYKERNEL3_DIR/Image.gz-dtb
+rm -rf $ANYKERNEL3_DIR/dtbo.img
+rm -rf $ANYKERNEL3_DIR/DuskMane_Kernel.zip
 rm -rf out
-rm -rf anykernel
-
-echo "${GREEN}copying needed tools from compiler-tools${RST}"
-
-cd compiler-tools
-cp -R anykernel $cd ..
 
 
 cd ..
@@ -47,11 +73,10 @@ if [ -f out/arch/arm64/boot/Image.gz-dtb ]; then
 	echo "${GREEN}building.....${RST}"
 	
 
-	export CROSS_COMPILE=$(pwd)/64bit/bin/aarch64-linux-android- 
-	export CROSS_COMPILE_ARM32=$(pwd)/32bit/bin/arm-linux-androideabi-
+	export CROSS_COMPILE=$(pwd)/64bit/bin/aarch64-elf-
+	export CROSS_COMPILE_ARM32=$(pwd)/32bit/bin/arm-eabi-
 	export ARCH=arm64
 	export SUBARCH=arm64
-	export CLANG_TRIPLE=aarch64-linux-android-
 	export LLVM="llvm-"
 	export AR=llvm-ar
 	export NM=llvm-nm
@@ -102,8 +127,8 @@ make O=out ARCH=arm64 wayne_defconfig
 
 echo "${GREEN}building.....${RST}"
 
-export CROSS_COMPILE=$(pwd)/64bit/bin/aarch64-linux-android- 
-export CROSS_COMPILE_ARM32=$(pwd)/32bit/bin/arm-linux-androideabi-
+export CROSS_COMPILE=$(pwd)/64bit/bin/aarch64-elf- 
+export CROSS_COMPILE_ARM32=$(pwd)/32bit/bin/arm-eabi-
 export ARCH=arm64
 export SUBARCH=arm64
 export CLANG_TRIPLE=aarch64-linux-android-
