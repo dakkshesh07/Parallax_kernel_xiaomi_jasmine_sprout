@@ -51,8 +51,6 @@ rm -rf $ANYKERNEL3_DIR/DuskMane_Kernel.zip
 rm -rf out
 
 
-cd ..
-
 if [ -f out/arch/arm64/boot/Image.gz-dtb ]; then
 	echo "${RED}old images found!, cleaning now${NC}"
 	cd anykernel
