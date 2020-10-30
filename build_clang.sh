@@ -4,7 +4,17 @@ clear
 
 #git clone https://github.com/stormbreaker-project/arm-linux-androideabi-4.9.git 32bit
 
-git clone https://github.com/kdrag0n/proton-clang.git clang
+if [ -r clang ]; then
+  echo clang found! check for update...
+  cd clang
+  git pull
+  cd ..
+
+else
+  echo clang not found!, git cloning it now....
+  git clone https://github.com/kdrag0n/proton-clang.git clang
+
+fi
 
 ANYKERNEL3_DIR=$PWD/anykernel/
 
