@@ -3,6 +3,7 @@ clear
 if [ -r clang ]; then
   echo clang found! check for update...
   cd clang
+  git config pull.rebase false
   git pull
   cd ..
 
