@@ -1,5 +1,11 @@
 clear
 
+## Copy this script inside the kernel directory
+
+echo checking for repo update
+git config pull.rebase false
+git pull
+
 if [ -r clang ]; then
   echo clang found! check for update...
   cd clang
@@ -26,7 +32,7 @@ echo "${GREEN}cleaning old files${RST}"
 echo "**** Removing leftovers ****"
 rm -rf $ANYKERNEL3_DIR/Image.gz-dtb
 rm -rf $ANYKERNEL3_DIR/dtbo.img
-rm -rf $ANYKERNEL3_DIR/DuskMane_Kernel.zip
+rm -rf $ANYKERNEL3_DIR/Parallax_Kernel.zip
 rm -rf out
 
 make clean && make distclean && make mrproper
@@ -41,7 +47,7 @@ echo "${GREEN}starting build now, go have a cup coffee or tea${RST}"
 
 sleep 5
 
-make O=out ARCH=arm64 duskmane_defconfig
+make O=out ARCH=arm64 parallax_defconfig
 
 PATH="${PWD}/clang/bin:${PATH}" \
 make -j$(nproc --all) O=out \
@@ -63,7 +69,7 @@ make -j$(nproc --all) O=out \
     cp out/arch/arm64/boot/Image.gz-dtb anykernel
     cd anykernel
       
-    sudo zip -r9 DuskMane_Kernel.zip .
+    sudo zip -r9 Parallax_Kernel.zip .
 
 
     cd ..

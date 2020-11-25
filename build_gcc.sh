@@ -2,11 +2,18 @@ clear
 
 echo kernel clompiler for android by dakkshesh
 
+## Copy this script inside the kernel directory
+
+echo checking for repo update
+git config pull.rebase false
+git pull
+
 echo Lets start....
 
 		if [ -r 64bit ]; then
 			echo 64 bit gcc found! check for update....
 			cd 64bit
+			git config pull.rebase false
 			git pull
 			cd ..
 
@@ -19,6 +26,7 @@ echo Lets start....
 		if [ -r 32bit ]; then
   			echo 32 bit gcc found! check for update...
   			cd 32bit
+  			git config pull.rebase false
   			git pull
   			cd ..
 
@@ -29,7 +37,7 @@ echo Lets start....
   		fi
   		
 
-ZIPNAME="DuskMane_Kernel"
+ZIPNAME="Parallax_Kernel"
 
 
 GREEN="\033[01;32m"
@@ -47,7 +55,7 @@ TANGGAL=$(date +"%F-%S")
 echo "**** Removing leftovers ****"
 rm -rf $ANYKERNEL3_DIR/Image.gz-dtb
 rm -rf $ANYKERNEL3_DIR/dtbo.img
-rm -rf $ANYKERNEL3_DIR/DuskMane_Kernel.zip
+rm -rf $ANYKERNEL3_DIR/Parallax_Kernel.zip
 rm -rf out
 
 
@@ -66,7 +74,7 @@ if [ -f out/arch/arm64/boot/Image.gz-dtb ]; then
 
 	sleep 5
 
-	make O=out ARCH=arm64 wayne_defconfig
+	make O=out ARCH=arm64 parallax_defconfig
 
 	echo "${GREEN}building.....${RST}"
 	
@@ -93,7 +101,7 @@ if [ -f out/arch/arm64/boot/Image.gz-dtb ]; then
 		cp out/arch/arm64/boot/Image.gz-dtb anykernel
 	    cd anykernel
 	    	    
-	    sudo zip -r9 DuskMane_Kernel.zip .
+	    sudo zip -r9 Parallax_Kernel.zip .
 
 	    cd ..
 	    
@@ -121,7 +129,7 @@ echo "${GREEN}starting build now, go have a cup coffee or tea${RST}"
 
 sleep 5
 
-make O=out ARCH=arm64 wayne_defconfig
+make O=out ARCH=arm64 parallax_defconfig
 
 echo "${GREEN}building.....${RST}"
 
@@ -148,7 +156,7 @@ fi
 		cp out/arch/arm64/boot/Image.gz-dtb anykernel
     	cd anykernel
     	
-    	sudo zip -r9 DuskMane_Kernel.zip .
+    	sudo zip -r9 Parallax_Kernel.zip .
 
 
     	cd ..
