@@ -1083,7 +1083,7 @@
 		vdd_gfx-supply = <&gfx_vreg_corner>;
 		qcom,gfxfreq-corner =
 			< 0         0>,
-			< 160000000 1>,  /* MinSVS */
+			< 150000000 1>,  /* MinSVS */
 			< 266000000 2>,  /* LowSVS */
 			< 370000000 3>,  /* SVS    */
 			< 465000000 4>,  /* SVS_L1 */
