@@ -213,7 +213,7 @@
 				/* NOM_L1 */
 				qcom,gpu-pwrlevel@2 {
 					reg = <2>;
-					qcom,gpu-freq = <648000000>;
+					qcom,gpu-freq = <650000000>;
 					qcom,bus-freq = <11>;
 					qcom,bus-min = <10>;
 					qcom,bus-max = <12>;
@@ -283,7 +283,7 @@
 				/* NOM_L1 */
 				qcom,gpu-pwrlevel@0 {
 					reg = <0>;
-					qcom,gpu-freq = <648000000>;
+					qcom,gpu-freq = <650000000>;
 					qcom,bus-freq = <13>;
 					qcom,bus-min = <13>;
 					qcom,bus-max = <13>;
